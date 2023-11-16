@@ -1,0 +1,390 @@
+
+
+
+
+<!-- Enlace al CSS de Swiper -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+
+<!-- Enlace al JS de Swiper -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+
+{%- liquid
+ assign img_predeterminado="https://res.cloudinary.com/darps1cta/image/upload/v1681937216/sitioweb/5_razones_por_las_que_tu_negocio_necesita_una_tienda_virtual_en_Shopify_elugcl.jpg"
+
+ -%}
+
+<section class='diapositiva-nueva-desktop swiper ' >
+
+<div class="swiper-wrapper">
+
+      {%- for block in section.blocks -%}
+   
+
+       
+        {% if block.settings.image_desktop  %}
+   <a  href="{{block.settings.link_de_diapositiva}}" class=" swiper-slide desktop-image" >
+      {{ block.settings.image_desktop | image_url: width: 1536, height: 600 | image_tag: sizes: "(max-width: 768px) 40vw, (max-width: 1280px) 720px, (max-width: 1920px) 1280px, (max-width: 2560px) 1920px, (max-width: 3840px) 2560px", class: "swiper-slide desktop-image",alt:"" }}
+     {% if block.settings.link_de_diapositiva and block.settings.botom_diapositiva %}
+  <button class="botom-diapositiva">
+   {{ block.settings.botom_diapositiva }}
+    </button>
+ {% endif %}
+   </a>
+        
+
+  
+  {% else %}
+  
+    <img
+      class="banner-predeterminado desktop-image"
+      alt="predeterminado desk"
+      src={{img_predeterminado}}>
+   
+  {% endif %}
+          
+{% endfor %}      
+</div>
+  <div class="swiper-pagination"></div>
+    <span class="swiper-button-prev"></span>
+    <span class="swiper-button-next"></span>
+</section>
+<section class=' diapositiva-nueva-mobil swiper '>
+    <div class="swiper-wrapper">
+  {% for block in section.blocks %}
+  {% comment %} MOBIL {% endcomment %}
+  {% if block.settings.image_mobile  %}
+ 
+   
+    <a  href="{{block.settings.link_de_diapositiva}}" class="mobile-image swiper-slide">
+      {{ block.settings.image_mobile | image_url: width: 400, height: 600 | image_tag: width: 360, height: 600, sizes: "(min-width: 750px) 100vw, (min-width: 575px) calc(50vw - 300px), (min-width: 375px) calc(25vw - 150px)", class: " swiper-slide mobile-image",alt:"" }}
+    {% if block.settings.link_de_diapositiva and block.settings.botom_diapositiva %}
+      <button  class="botom-diapositiva-mobil">
+   {{ block.settings.botom_diapositiva }}
+    </button>
+       {% endif %}
+    </a>
+ 
+    {% else %}
+   
+    <img
+      class="banner-predeterminado mobile-image"
+      alt="predeterminado mov"
+      src={{img_predeterminado}}>
+    
+  {% endif %}
+
+        {% endfor %}
+        </div>
+  <div class="swiper-pagination"></div>
+    <span class="swiper-button-prev"></span>
+    <span class="swiper-button-next"></span>
+</section>
+
+<style>
+    /* Estilos generales para diapositivas de escritorio */
+.diapositiva-nueva-desktop {
+    display: block; /* Muestra por defecto */
+  overflow:hidden;
+ cursor:grab;
+}
+
+/* Estilos generales para diapositivas móviles - ocultos por defecto */
+.diapositiva-nueva-mobil {
+    display: none;
+}
+.desktop-image img {
+    width: 100%;
+    height: auto;
+    background-attachment: fixed; /* O 'scroll', dependiendo de lo que necesites */
+    /* Otras propiedades del fondo */
+    background-size: cover; /* Por ejemplo */
+    background-position: center; /* Centra el fondo */
+  
+}
+  .botom-diapositiva{
+    position:relative;
+    bottom:300px;
+    left:70%;
+    padding:10px;
+    text-decoration:none;
+    font-weight:bold;
+    background-color:#C0437D;
+    color:#11010A;
+    border-radius:10px 10px 10px 10px;
+    transition:all;
+    transition-duration:.5s;
+  }
+  .botom-diapositiva:hover{
+    background-color:#EB70A9;
+    color:#2F041D;
+  }
+  .botom-diapositiva-mobil{
+    display:none;
+  }
+@media (max-width: 1024px) {
+    .desktop-image img {
+        width: 100%;
+        height: 600px; /* Altura para pantallas hasta 1024px */
+        background-attachment: fixed; /* O 'scroll', dependiendo de lo que necesites */
+    /* Otras propiedades del fondo */
+    background-size: cover; /* Por ejemplo */
+    background-position: center; /* Centra el fondo */
+    }
+}
+@media (min-width: 1025px) and (max-width: 1536px) {
+    .desktop-image img {
+        width: 100%;
+        height: 630px; /* Altura para pantallas entre 1025px y 1536px */
+        background-attachment: fixed; /* O 'scroll', dependiendo de lo que necesites */
+    /* Otras propiedades del fondo */
+    background-size: cover; /* Por ejemplo */
+    background-position: center; /* Centra el fondo */
+    }
+    .swiper-button-next:after, .swiper-button-prev:after {
+     font-size: 17px;
+  }
+}
+@media (min-width: 1537px) {
+    .desktop-image img {
+        width: 100%;
+        height: 800px; /* Altura para pantallas de 1537px en adelante */
+        background-attachment: fixed; /* O 'scroll', dependiendo de lo que necesites */
+    /* Otras propiedades del fondo */
+    background-size: cover; /* Por ejemplo */
+    background-position: center; /* Centra el fondo */
+    }
+}
+@media (min-width: 360px) and (max-width: 449px) {
+    /* Oculta las diapositivas de escritorio en dispositivos móviles */
+    .diapositiva-nueva-desktop {
+        display: none;
+    }
+
+    /* Muestra las diapositivas móviles en dispositivos móviles */
+    .diapositiva-nueva-mobil {
+        display: block;
+      overflow:hidden;
+      
+    }
+  .botom-diapositiva-mobil{
+    display:flex;
+    justify-content:center;
+     position:relative;
+    bottom:300px;
+    width:200px;
+    left:30%;
+    padding:10px;
+    text-decoration:none;
+    font-weight:bold;
+    background-color:#C0437D;
+    color:#fafafa;
+    border-radius:10px 10px 10px 10px;
+    transition:all;
+    transition-duration:.5s;
+    
+  }
+
+    .swiper-button-next:after, .swiper-button-prev:after {
+     font-size: 12px;
+  }
+
+}
+
+@media (min-width: 450px) and (max-width: 767px) {
+    .diapositiva-nueva-desktop {
+        display: none;
+    }
+    /* Oculta las diapositivas de escritorio en dispositivos móviles */
+    .mobile-image {
+        width: 100%;
+        height: 300px; 
+    }
+
+    /* Muestra las diapositivas móviles en dispositivos móviles */
+    .diapositiva-nueva-mobil {
+        display: block;
+      overflow:hidden;
+      
+    }
+  .botom-diapositiva-mobil{
+    display:flex;
+    justify-content:center;
+     position:relative;
+    bottom:150px;
+    width:200px;
+    left:30%;
+    padding:10px;
+    text-decoration:none;
+    font-weight:bold;
+    background-color:#C0437D;
+    color:#fafafa;
+    border-radius:10px 10px 10px 10px;
+    transition:all;
+    transition-duration:.5s;
+    
+  }
+}
+
+      
+/* Consultas de medios para dispositivos de escritorio */
+@media (min-width: 768px) {
+    /* Muestra las diapositivas de escritorio en dispositivos de escritorio */
+    .diapositiva-nueva-desktop {
+        display: block;
+    }
+
+    /* Oculta las diapositivas móviles en dispositivos de escritorio */
+    .diapositiva-nueva-mobil {
+        display: none;
+    }
+}
+
+.swiper-pagination {
+    text-align: center;
+    position: absolute;
+    bottom: -20px; /* Ajusta esta propiedad para mover la paginación debajo de las imágenes */
+    left: 0;
+    width: 100%;
+    z-index: 10; /* Asegura que la paginación esté por encima de otros elementos */
+}
+
+.swiper{
+    position: relative; /* Necesario para que la posición absoluta de la paginación funcione correctamente */
+    margin-bottom: 30px; /* Añade margen para evitar que la paginación se superponga con otros contenidos debajo del slider */
+}
+
+/* Estilos para los puntos de paginación */
+.swiper-pagination-bullet {
+    background: #000; /* Color de los puntos */
+    opacity: 0.7;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+}
+
+  .swiper-button-prev, .swiper-button-next {
+    
+    color: #685B69; /* Cambia el color según tu diseño */
+  border-radius:10px 10px 10px 10px;
+    background-color:#FCCDE6;
+}
+
+
+  .swiper-button-prev, .swiper-button-next {
+    z-index: 12; /* Asegúrate de que sea superior a los otros elementos en la página */
+}
+</style>
+
+<script>
+$(document).ready(function(){
+  var swiperDesktop = new Swiper('.diapositiva-nueva-desktop', {
+    loop: true,
+    autoplay: {
+      delay: 4500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+      enabled:true
+    },
+    // Otras opciones...
+  });
+
+  var swiperMobile = new Swiper('.diapositiva-nueva-mobil', {
+    loop: true,
+    autoplay: {
+      delay: 4500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+      enabled:true
+    },
+    // Otras opciones...
+  });
+});
+
+
+ 
+
+</script>
+
+{% comment %}
+Banner ropa - Fin
+{% endcomment %}{% schema %}
+  {
+    "name": "Diapositiva nueva",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "text",
+        "id": "texto_titulo",
+        "label": "Titulo (Aun no esta activo para usarlo)"
+
+
+      }
+     
+],
+      "blocks": [
+    {
+      "type":"announcement",
+      "name":"Diapositva +",
+      "limit":4,
+      "settings": [
+        {
+        "type": "image_picker",
+        "id": "image_desktop",
+        "label": "Imagen para desktop"
+
+
+      },
+      {
+        "type": "image_picker",
+        "id": "image_mobile",
+        "label": "Imagen para mobil"
+
+      },
+      {
+      "type":"url",
+      "id":"link_de_diapositiva",
+      "label":"Link de la diapositiva"
+      },
+        {
+          "type":"text",
+          "id":"botom_diapositiva",
+          "label":"Texto del boton"
+        }
+      ]
+    }
+
+      ],
+    "presets": [
+      {
+        "name": "Diapositiva nueva",
+        "blocks": [
+          {
+            "type": "announcement"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

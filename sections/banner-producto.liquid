@@ -1,0 +1,126 @@
+
+<section class='slider-banner-ropa' >
+        {% if  section.settings.image_banner_desktop  %}
+ {{ section.settings.image_banner_desktop |image_url:width:900,height:100 | image_tag: width:900,height:100,class:desktop-image }}
+ 
+   
+  {% endif %}
+   
+     
+</section>
+<section class='slider-banner-ropa-mobil'>
+ 
+  {% comment %} MOBIL {% endcomment %}
+  {% if section.settings.image_banner_mobile  %}
+      {{ section.settings.image_banner_mobile | image_url: width: 400, height: 100 | image_tag: width: 360, height: 100, sizes: "(min-width: 750px) 100vw, (min-width: 575px) calc(50vw - 300px), (min-width: 375px) calc(25vw - 150px)", class: "mobile-image-banner" }}
+ 
+    
+  {% endif %}
+
+      
+</section>
+<style>
+
+  .banner-ropa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    max-width: 100%;
+
+}
+
+.banner-image {
+    margin: 0;
+}
+
+.banner-content {
+    text-align: center;
+    color: #fff;
+    /* Ajusta el color del texto según tu esquema de color */
+
+}
+
+
+
+/* Añade estilos adicionales según sea necesario */
+.desktop-image {
+    display: block;
+    width: 80%;
+
+
+}
+.slider-banner-ropa{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+margin-top: 15px;
+margin-bottom: 15px;
+}
+.banner-predeterminado {
+    width: 100%;
+    height: 100px;
+}
+
+/* Estilos para pantallas móviles y tabletas */
+@media (max-width: 767px) {
+    
+    .desktop-image, .slider-banner-ropa {
+        display: none !important;
+        /* Ocultar imagen de escritorio en pantallas móviles y tabletas */
+    }
+
+    .slider-banner-ropa-mobil {
+      display: block !important
+    }
+    .mobile-image-banner {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+      height:100px;
+    }
+}
+@media (min-width: 767px) {
+  .mobile-image-banner, .slider-banner-ropa-mobil {
+    display: none !important;
+}
+}
+</style>
+
+
+{% schema %}
+    {
+      "name": "Banner producto",
+      "tag": "section",
+      "class": "section",
+      "disabled_on": {
+        "groups": ["header", "footer"]
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_banner_desktop",
+          "label": "Poner el banner de desktop"
+  
+        },
+        {
+          "type": "image_picker",
+          "id": "image_banner_mobile",
+          "label": "Poner el banner de mobil"
+  
+        }
+       
+  ],
+     
+      "presets": [
+        {
+          "name": "Banner producto"
+        }
+      ]
+    }
+  {% endschema %}
+{% comment %}
+Banner ropa - Fin
+{% endcomment %}
