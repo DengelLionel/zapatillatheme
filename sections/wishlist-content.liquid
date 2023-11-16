@@ -73,7 +73,9 @@ function removeFromWishlist(productId) {
 
 </script>
 <style>
-  .titulo{
+
+  @media screen (max-width: 768px) {
+    .titulo{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -83,4 +85,19 @@ function removeFromWishlist(productId) {
   .contenedor-deseo{
   padding: 16px;
   }
+  }
+  @media screen (min-width: 769px) and (min-width: 1536px) {
+    .titulo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size:4rem;
+  }
+  .contenedor-deseo{
+  padding: 30px;
+  }
+  }
+
+  
 </style>
