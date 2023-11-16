@@ -1,10 +1,33 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
 {%- assign wishlist_page = pages[page_wish] -%}
 <a href="{{ wishlist_page.url }}" class="wishlist-header-btn">
-  <i class="heart-icon">❤️</i>
+  <svg class="heart-icon" width="25" height="21" viewBox="0 0 25 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.125 0C15.9375 0 13.8751 0.882589 12.5 2.31676C11.1248 0.882589 9.0625 0 6.875 0C2.99988 0 0 2.6475 0 6.06747C0 10.2593 4.24988 13.6244 10.6873 18.8089L12.5 20.2434L14.3127 18.8089C20.7501 13.6243 25 10.2593 25 6.06747C25 2.6475 22.0001 0 18.125 0ZM13.2714 17.3575L13.0178 17.5616L12.5 17.9714L11.9822 17.5617L11.729 17.3577C8.69904 14.9179 6.08227 12.8107 4.3524 10.9266C2.6723 9.0966 1.92308 7.59801 1.92308 6.06747C1.92308 4.8621 2.42921 3.75156 3.34826 2.94051C4.26424 2.13214 5.51671 1.68695 6.875 1.68695C8.44555 1.68695 9.9982 2.32836 11.0282 3.40262L12.5 4.93754L13.9717 3.40262C15.0018 2.32836 16.5544 1.68695 18.125 1.68695C19.4834 1.68695 20.7358 2.13214 21.6518 2.94045C22.5708 3.75156 23.0769 4.86204 23.0769 6.06747C23.0769 7.59801 22.3277 9.09654 20.6477 10.9265C18.9179 12.8106 16.3013 14.9176 13.2714 17.3575Z" fill="url(#paint0_linear_135_17)"/>
+<defs>
+<linearGradient id="paint0_linear_135_17" x1="12.5" y1="0" x2="12.5" y2="20.2434" gradientUnits="userSpaceOnUse">
+<stop stop-color="#9A2969"/>
+<stop offset="0.515625" stop-color="#7B0F6C"/>
+<stop offset="1" stop-color="#E52DF5"/>
+</linearGradient>
+</defs>
+</svg>
+
   <span class="wishlist-count">0</span>
 </a>
+<style>
+  .wishlist-count{
+    width: 7px;
+    height: 7px;
+    background-color: black;
+    color:white;
+    border-radius: 50%;
 
+  }
+  .wishlist-header-btn{
+    text-decoration: none;
+    
+  }
+</style>
 <script>
     function updateWishlistCount() {
   var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
