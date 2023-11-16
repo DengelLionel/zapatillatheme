@@ -1,0 +1,40 @@
+{%- layout none -%}
+<div id="wishlist-container">
+  <h1>Mi Lista de Deseos</h1>
+  <div id="wishlist-items"></div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+  var container = document.getElementById('wishlist-items');
+
+  wishlist.forEach(function(productId) {
+    fetch(`/products/${productId}.js`)
+      .then(response => response.json())
+      .then(product => {
+        container.innerHTML += `<div class="wishlist-product">
+                                  <img src="${product.featured_image}" alt="${product.title}">
+                                  <h3>${product.title}</h3>
+                                  <span>${product.variants[0].price}</span>
+                                  <button onclick="addToCart(${product.variants[0].id})">Add to Cart</button>
+                                  <button onclick="removeFromWishlist('${productId}')">Remove</button>
+                                </div>`;
+      });
+  });
+});
+
+function removeFromWishlist(productId) {
+  var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+  var newWishlist = wishlist.filter(function(item) {
+    return item !== productId;
+  });
+  localStorage.setItem('wishlist', JSON.stringify(newWishlist));
+  document.getElementById('wishlist-item-' + productId).remove();
+}
+if (wishlist.length === 0) {
+  container.innerHTML = '<p>Tu lista de deseos está vacía.</p>';
+}
+
+
+</script>
