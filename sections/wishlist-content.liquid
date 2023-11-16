@@ -19,7 +19,9 @@
       })
       .then(product => {
         container.innerHTML += `<div class="wishlist-product" id="wishlist-item-${productHandle}">
+          <a href="${product.url}">
                                   <img width=150 height=150 src="${product.featured_image}" alt="${product.title}">
+                                  </a>
                                   <h3>${product.title}</h3>
                                   <span>${product.variants[0].price}</span>
                                   <button onclick="addToCart(${product.variants[0].id})">Add to Cart</button>
