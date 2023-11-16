@@ -326,7 +326,7 @@
             {% render block %}
         {%- endcase -%}
       {%- endfor -%}
-      {% render 'wish-encabezado' %}
+      {% render 'wish-encabezado' ,page_wish:section.settings.page_wishlist %}
       <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link focus-inset" id="cart-icon-bubble">
         {%- liquid
           if cart == empty
@@ -596,6 +596,12 @@
     {
       "type": "header",
       "content": "t:sections.header.settings.header__1.content"
+    },
+    {
+      "type":"page",
+      "id":"page_wishlist",
+      "label": "Poner la pagina de lista de deseos"
+
     },
     {
       "type": "color_scheme",
