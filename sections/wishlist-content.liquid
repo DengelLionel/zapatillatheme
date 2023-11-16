@@ -22,11 +22,14 @@
           <a href="${product.url}">
                                   <img width=150 height=150 src="${product.featured_image}" alt="${product.title}">
                                   </a>
+                                  <div class="textos">
                                   <h3>${product.title}</h3>
                                   <span>${product.variants[0].price}</span>
+
                                   <button onclick="addToCart(${product.variants[0].id})">Add to Cart</button>
                                   <button onclick="removeFromWishlist('${productHandle}')">Remove</button>
-                                </div>`;
+                                  </div>
+                                  </div>`;
       })
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
@@ -84,6 +87,11 @@ function removeFromWishlist(productId) {
   }
   .contenedor-deseo{
   padding: 16px;
+  }
+  .wishlist-product{
+    display:flex;
+    flex-direction: row;
+    gap:10px;
   }
   }
   @media (min-width: 769px) and (max-width: 1536px) {
