@@ -60,7 +60,7 @@ function removeFromWishlist(productId) {
 
   // Eliminar el elemento de la lista de deseos en la interfaz
   document.getElementById('wishlist-item-' + productId).remove();
-
+  updateWishlistCount();
   // Manejar el estado vacío
   if (newWishlist.length === 0) {
     container.innerHTML = '<p>Tu lista de deseos está vacía.</p>';
