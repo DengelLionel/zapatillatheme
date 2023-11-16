@@ -32,6 +32,24 @@
   });
 });
 
+function addToCart(variantId) {
+  $.ajax({
+    type: 'POST',
+    url: '/cart/add.js',
+    data: {
+      id: variantId,
+      quantity: 1
+    },
+    dataType: 'json',
+    success: function() { 
+      alert("Producto añadido al carrito");
+      // Aquí puedes actualizar el contador del carrito o dar algún otro tipo de feedback al usuario
+    },
+    error: function() {
+      alert("Hubo un error al añadir el producto al carrito.");
+    }
+  });
+}
 
 function removeFromWishlist(productId) {
   var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
