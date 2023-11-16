@@ -1,0 +1,17 @@
+<button class="wishlist-btn" data-product-id="{{ productid }}">
+  <i class="heart-icon">❤️</i>
+</button>
+<style>
+    .wishlist-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+</style>
+<script>
+    $('.wishlist-btn').on('click', function() {
+  var productId = $(this).data('product-id');
+  // Aquí, implementa la lógica para añadir el producto a la lista de deseos
+  console.log('Producto añadido a la lista de deseos:', productId);
+});
+</script>
