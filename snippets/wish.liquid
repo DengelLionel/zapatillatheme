@@ -1,23 +1,16 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
-<button class="wishlist-btn" data-product-id="{{ productid }}">
+<button class="wishlist-btn" data-product-handle="{{ producthandle }}">
   <i class="heart-icon">❤️</i>
 </button>
-<style>
-    .wishlist-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-</style>
 <script>
 $('.wishlist-btn').on('click', function() {
-  var productId = $(this).data('product-id');
+  var productHandle = $(this).data('product-handle');
   var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
 
-  if (wishlist.includes(productId)) {
-    wishlist = wishlist.filter(function(id) { return id !== productId; });
+  if (wishlist.includes(productHandle)) {
+    wishlist = wishlist.filter(function(handle) { return handle !== productHandle; });
   } else {
-    wishlist.push(productId);
+    wishlist.push(productHandle);
   }
 
   localStorage.setItem('wishlist', JSON.stringify(wishlist));
@@ -30,6 +23,4 @@ function updateWishlistCount() {
   var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
   $('.wishlist-count').text(wishlist.length);
 }
-
-
 </script>
