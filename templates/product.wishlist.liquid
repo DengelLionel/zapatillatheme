@@ -8,7 +8,7 @@
   document.addEventListener('DOMContentLoaded', function() {
   var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
   var container = document.getElementById('wishlist-items');
-
+console.log("list",wishlist)
   wishlist.forEach(function(productId) {
     fetch(`/products/${productId}.js`)
       .then(response => response.json())
