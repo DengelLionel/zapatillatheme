@@ -1,6 +1,6 @@
 {%- layout none -%}
-<div id="wishlist-container">
-  <h1>{{ page.title }}</h1>
+<div class="contenedor-deseo" id="wishlist-container">
+  <h1 class="titulo">{{ page.title }}</h1>
   <div id="wishlist-items"></div>
 </div>
 
@@ -72,3 +72,15 @@ function removeFromWishlist(productId) {
 
 
 </script>
+<style>
+  .titulo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size:2rem;
+  }
+  .contenedor-deseo{
+  padding: 16px;
+  }
+</style>
