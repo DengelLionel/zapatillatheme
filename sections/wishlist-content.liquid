@@ -42,14 +42,14 @@ function addToCart(variantId) {
     },
     dataType: 'json',
     success: function() { 
-      alert("Producto añadido al carrito");
-      // Aquí puedes actualizar el contador del carrito o dar algún otro tipo de feedback al usuario
+      window.location.href = '/cart'; // Redirige al usuario a la página del carrito
     },
     error: function() {
       alert("Hubo un error al añadir el producto al carrito.");
     }
   });
 }
+
 
 function removeFromWishlist(productId) {
   var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
