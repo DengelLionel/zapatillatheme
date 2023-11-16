@@ -57,11 +57,16 @@ function removeFromWishlist(productId) {
     return item !== productId;
   });
   localStorage.setItem('wishlist', JSON.stringify(newWishlist));
+
+  // Eliminar el elemento de la lista de deseos en la interfaz
   document.getElementById('wishlist-item-' + productId).remove();
+
+  // Manejar el estado vacío
+  if (newWishlist.length === 0) {
+    container.innerHTML = '<p>Tu lista de deseos está vacía.</p>';
+  }
 }
-if (wishlist.length === 0) {
-  container.innerHTML = '<p>Tu lista de deseos está vacía.</p>';
-}
+
 
 
 </script>
