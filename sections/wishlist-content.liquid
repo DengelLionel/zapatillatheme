@@ -5,24 +5,33 @@
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-  var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+ document.addEventListener('DOMContentLoaded', function() {
+  var wishlist = JSON.parse(localStorage.getItem('wishlist')) || []; // Asegúrate de que esto almacena handles, no IDs
   var container = document.getElementById('wishlist-items');
-console.log("list",wishlist)
-  wishlist.forEach(function(productId) {
-    fetch(`/products/${productId}.js`)
-      .then(response => response.json())
+
+  wishlist.forEach(function(productHandle) {
+    fetch(`/products/${productHandle}.js`)
+      .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(product => {
-        container.innerHTML += `<div class="wishlist-product">
+        container.innerHTML += `<div class="wishlist-product" id="wishlist-item-${productHandle}">
                                   <img src="${product.featured_image}" alt="${product.title}">
                                   <h3>${product.title}</h3>
                                   <span>${product.variants[0].price}</span>
                                   <button onclick="addToCart(${product.variants[0].id})">Add to Cart</button>
-                                  <button onclick="removeFromWishlist('${productId}')">Remove</button>
+                                  <button onclick="removeFromWishlist('${productHandle}')">Remove</button>
                                 </div>`;
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
       });
   });
 });
+
 
 function removeFromWishlist(productId) {
   var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
