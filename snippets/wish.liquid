@@ -10,9 +10,19 @@
 }
 </style>
 <script>
-    $('.wishlist-btn').on('click', function() {
+$('.wishlist-btn').on('click', function() {
   var productId = $(this).data('product-id');
-  // Aquí, implementa la lógica para añadir el producto a la lista de deseos
+  var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
   console.log('Producto añadido a la lista de deseos:', productId);
+  if (wishlist.includes(productId)) {
+    wishlist = wishlist.filter(function(id) { return id !== productId; });
+    // Opcional: Cambia el ícono o estilo para indicar que el producto fue removido
+  } else {
+    wishlist.push(productId);
+    // Opcional: Cambia el ícono o estilo para indicar que el producto fue añadido
+  }
+
+  localStorage.setItem('wishlist', JSON.stringify(wishlist));
 });
+
 </script>

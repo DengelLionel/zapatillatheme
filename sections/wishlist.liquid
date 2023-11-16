@@ -1,0 +1,16 @@
+<div id="wishlist-container">
+  <h1>Mi Lista de Deseos</h1>
+  <div id="wishlist-items"></div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
+    var container = document.getElementById('wishlist-items');
+
+    wishlist.forEach(function(id) {
+      // Aquí deberías hacer una llamada AJAX a la API de Shopify para obtener los detalles del producto y mostrarlos.
+      // Por ejemplo, puedes mostrar el nombre del producto y una imagen.
+    });
+  });
+</script>
