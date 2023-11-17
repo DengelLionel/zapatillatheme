@@ -96,6 +96,11 @@ function removeFromWishlist(productId) {
  .titulo-producto-deseo{
     text-decoration: none;
     }
+    .eliminar-deseo{
+    background-color: transparent;
+    outline: none;
+    border:none;
+  }
   @media (max-width: 768px) {
     .titulo{
   display: flex;
@@ -121,11 +126,7 @@ function removeFromWishlist(productId) {
     justify-content: space-between;
     width: 170px;
   }
-  .eliminar-deseo{
-    background-color: transparent;
-    outline: none;
-    border:none;
-  }
+ 
   .textotres{
     display: flex;
     flex-direction: column;
@@ -154,7 +155,25 @@ function removeFromWishlist(productId) {
   .wishlist-product{
     display:flex;
     flex-direction: row;
+    gap:30px;
+  }
+  .textosdos{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 200px;
+  }
+
+  .textotres{
+    display: flex;
+    flex-direction: column;
     gap:10px;
+  }
+  .añadircarrito-deseo{
+    background-color:#222222;
+    color:#fafafa;
+    border-radius: 10px 10px 10px 10px;
+    padding: 10px;
   }
   }
 
