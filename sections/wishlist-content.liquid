@@ -39,7 +39,7 @@
                                   </button>
                                   </div>
                                   <div class="textotres">
-                                  <span>${formattedPrice}</span>
+                                  <span class="precio-deseo">${formattedPrice}</span>
 
                                   <button class="añadircarrito-deseo" onclick="addToCart(${product.variants[0].id})">AÑADIR AL CARRITO</button>
                                 </div>
@@ -139,7 +139,10 @@ function removeFromWishlist(productId) {
     border-radius: 10px 10px 10px 10px;
     padding: 5px 5px 5px 5px;
   }
- 
+  .precio-deseo{
+    font-weight: bold;
+    font-size: 1rem;
+  }
   }
   @media (min-width: 769px) and (max-width: 1536px) {
     .titulo{
