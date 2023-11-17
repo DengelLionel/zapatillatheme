@@ -36,11 +36,21 @@
   }
 </style>
 <script>
-    function updateWishlistCount() {
+function updateWishlistCount() {
   var wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-  $('.wishlist-count').text(wishlist.length);
+  var count = wishlist.length;
+  var wishlistCountElement = $('.wishlist-count');
+
+  wishlistCountElement.text(count);
+
+  if (count === 0) {
+    wishlistCountElement.hide(); // Ocultar si no hay elementos
+  } else {
+    wishlistCountElement.show(); // Mostrar si hay elementos
+  }
 }
 
 // Llamar esta función al cargar la página y después de modificar la lista de deseos
 updateWishlistCount();
+
 </script>
