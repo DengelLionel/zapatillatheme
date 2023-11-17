@@ -27,7 +27,7 @@
                                   </a>
                                   <div class="textos">
                                   <div class="textosdos">
-                                    <a href="${product.url}">
+                                    <a class="titulo-producto-deseo" href="${product.url}">
                                   <h3>${product.title}</h3>
                                   </a>
                                   <button class="eliminar-deseo" onclick="removeFromWishlist('${productHandle}')">
@@ -93,7 +93,9 @@ function removeFromWishlist(productId) {
 
 </script>
 <style>
-
+ .titulo-producto-deseo{
+    text-decoration: none;
+    }
   @media (max-width: 768px) {
     .titulo{
   display: flex;
@@ -135,6 +137,7 @@ function removeFromWishlist(productId) {
     border-radius: 10px 10px 10px 10px;
     padding: 5px 5px 5px 5px;
   }
+ 
   }
   @media (min-width: 769px) and (max-width: 1536px) {
     .titulo{
