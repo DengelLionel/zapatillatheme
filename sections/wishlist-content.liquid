@@ -9,7 +9,7 @@
   var wishlist = JSON.parse(localStorage.getItem('wishlist')) || []; // Asegúrate de que esto almacena handles, no IDs
   var container = document.getElementById('wishlist-items');
  
-var formattedPrice = formatCurrency(product.variants[0].price);
+
   wishlist.forEach(function(productHandle) {
     fetch(`/products/${productHandle}.js`)
       .then(response => {
@@ -19,6 +19,7 @@ var formattedPrice = formatCurrency(product.variants[0].price);
         return response.json();
       })
       .then(product => {
+        var formattedPrice = formatCurrency(product.variants[0].price);
         container.innerHTML += `<div class="wishlist-product" id="wishlist-item-${productHandle}">
           <a href="${product.url}">
                                   <img width=150 height=150 src="${product.featured_image}" alt="${product.title}">
